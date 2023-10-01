@@ -20,18 +20,23 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module top();
+module top(input RsRx, input reg [0:7] sw,CLK100MHZ, output RsTx);
 //RS232 SIPO -> PISO
 defparam c2.SCALE = 2;
 
-clk_div c1(.clk(),.clk_o());
-clk_div c2(.clk(),.clk_o());
 
-UART_Tx(.clk(),.STOP(),.EN(),.DAT_RDY(),
-         .DATA(),.parity_toggle(),.SO(),
-                             .MEM_EN());
+wire CLKBAUD, CLKBAUD_d2;
+wire DAT_RDY;
+wire [0:7] PO; //
+wire SO;
+clk_div c1(.clk(CLK100MHZ),.clk_o(CLKBAUD));
+clk_div c2(.clk(CLK100MHZ),.clk_o(CLKBAUD_d2));
+
+UART_Rx rx (.clk(CLKBAUD),.SI(RsRx),.PO(PO)); // should wait 2 clocks but need to modify Rx
+
+UART_Tx_ tx (.clk(CLKBAUD),.EN(sw[0]),.DAT_RDY(DAT_RDT),.DATA(PO),.SO(SO));
                             
-UART_Rx(.clk(),.SI(),.PO());
+assign RsTx = SO;
 
 endmodule
 
@@ -68,4 +73,61 @@ begin
                   end            
         end
 end  
+endmodule
+
+module UART_Tx_(input clk, EN, DAT_RDY,[0:7] DATA, output reg SO);
+
+reg [0:7] PLL_BUFFR;
+reg [0:4] iter;
+reg [0:1] ST_CTRL = 0;
+reg MV_TO_END;
+
+always @ (posedge clk)
+    begin   
+        if (ST_CTRL == 2'b00)
+            begin
+                SO = 1; //  idle unless enabled & empty
+                if(EN && DAT_RDY) ST_CTRL <= 2'b01;        
+            end        
+        if (ST_CTRL == 2'b01)
+            begin
+                SO = 0;
+                ST_CTRL <= 2'b10; // res
+                iter <= 0;
+            end    
+       
+        if (ST_CTRL == 2'b10)
+            begin
+                        if (iter < 8)
+                            begin
+                                if (iter == 0) 
+                                    begin
+                                        PLL_BUFFR = DATA; 
+                                    end // rst at start prior to anything
+ 
+                                        SO = PLL_BUFFR[7];
+                                        iter <= iter + 1;
+                                        PLL_BUFFR <= PLL_BUFFR >> 1;
+                                    if (iter == (7)) 
+                                        begin
+                                            ST_CTRL <= 2'b11;
+                                            iter <= 0;
+                                        end
+                              end
+            end    
+        if (ST_CTRL == 2'b11)
+            begin
+                if (DAT_RDY) 
+                 begin
+                   ST_CTRL <= 2'b01;
+                   SO = 1;
+                 end
+                else 
+                 begin
+                    ST_CTRL <= 2'b00;
+                    SO <= 1; 
+                 end
+
+            end  
+    end
 endmodule
