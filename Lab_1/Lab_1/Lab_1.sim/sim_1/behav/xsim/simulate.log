@@ -1,0 +1,18 @@
+Time resolution is 1 ps
+CLR
+
+LDEN
+
+ENUP
+
+ENUP
+
+ENUP
+
+ENUP
+
+EN!UP
+
+CLR
+
+$finish called at time : 85 ns : File "C:/Users/z434/OneDrive/Documents/Vivado Projects/COMPE470L/Lab_1/Lab_1/Lab_1.srcs/sim_1/new/bcd_counter_tb.v" Line 38
