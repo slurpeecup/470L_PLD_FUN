@@ -22,12 +22,14 @@
 
 module top();
 //RS232 SIPO -> PISO
+defparam c2.SCALE = 2;
+
 clk_div c1(.clk(),.clk_o());
-clk_div #(SCALE = 2) c2 (.clk(),.clk_o());
+clk_div c2(.clk(),.clk_o());
 
 UART_Tx(.clk(),.STOP(),.EN(),.DAT_RDY(),
-        .DATA(),.parity_toggle(),.SO(),
-                            .MEM_EN());
+         .DATA(),.parity_toggle(),.SO(),
+                             .MEM_EN());
                             
 UART_Rx(.clk(),.SI(),.PO());
 
