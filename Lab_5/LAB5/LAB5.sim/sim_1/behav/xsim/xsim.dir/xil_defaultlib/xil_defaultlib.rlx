@@ -2,6 +2,9 @@
 2020.2
 Oct 14 2022
 05:20:55
+C:/Users/z434/OneDrive/Documents/Vivado Projects/COMPE470L/Lab_4_REAL/LAB_4_REAL/LAB_4_REAL.srcs/sources_1/new/top.v,1696154083,verilog,,C:/Users/z434/OneDrive/Documents/Vivado Projects/COMPE470L/Lab_5/LAB5/LAB5.srcs/sources_1/new/top_.v,,MEM;UART_Tx;clk_div,,,,,,,,
 C:/Users/z434/OneDrive/Documents/Vivado Projects/COMPE470L/Lab_5/LAB5/LAB5.sim/sim_1/behav/xsim/glbl.v,1665704903,verilog,,,,glbl,,,,,,,,
-C:/Users/z434/OneDrive/Documents/Vivado Projects/COMPE470L/Lab_5/LAB5/LAB5.srcs/sim_1/new/Rx_TB.v,1696143784,verilog,,,,Rx_TB,,,,,,,,
-C:/Users/z434/OneDrive/Documents/Vivado Projects/COMPE470L/Lab_5/LAB5/LAB5.srcs/sources_1/new/top_.v,1696158219,verilog,,C:/Users/z434/OneDrive/Documents/Vivado Projects/COMPE470L/Lab_5/LAB5/LAB5.srcs/sim_1/new/Rx_TB.v,,UART_Rx;UART_Tx_;top,,,,,,,,
+C:/Users/z434/OneDrive/Documents/Vivado Projects/COMPE470L/Lab_5/LAB5/LAB5.srcs/sim_1/new/Rx_TB.v,1696455373,verilog,,,,Rx_TB,,,,,,,,
+C:/Users/z434/OneDrive/Documents/Vivado Projects/COMPE470L/Lab_5/LAB5/LAB5.srcs/sim_1/new/Rx_Tx_TB.v,1696457584,verilog,,,,Rx_Tx_TB,,,,,,,,
+C:/Users/z434/OneDrive/Documents/Vivado Projects/COMPE470L/Lab_5/LAB5/LAB5.srcs/sim_1/new/TOP_TB.v,1696454965,verilog,,,,TOP_TB,,,,,,,,
+C:/Users/z434/OneDrive/Documents/Vivado Projects/COMPE470L/Lab_5/LAB5/LAB5.srcs/sources_1/new/top_.v,1696483378,verilog,,C:/Users/z434/OneDrive/Documents/Vivado Projects/COMPE470L/Lab_5/LAB5/LAB5.srcs/sim_1/new/Rx_Tx_TB.v,,UART_Rx;UART_Tx_;top,,,,,,,,

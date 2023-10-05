@@ -23,26 +23,18 @@
 module Rx_TB();
 
 reg clk = 1'b1;
-reg SI;
-
+reg SI = 0;
+wire DAT_RDY;
 wire [0:7] PO;
 
-UART_Rx Rx_ (.clk(clk),.SI(SI),.PO(PO));
+UART_Rx Rx_ (.clk(clk),.SI(SI),.PO(PO),.DAT_RDY(DAT_RDY));
 
 always #5 
 begin
 clk = ~clk; //$display("clock\n");
 end
 
-initial
-begin 
+always #20 SI = ~SI;
 
-SI = 1; #20; SI = 0; #10; SI = 1; #10; SI = 0;
-        #10; SI = 1; #10; SI = 0;
-        #10; SI = 1; #10; SI = 0;
-        #10; SI = 1; #10; SI = 1;
-        #200;
 
-$finish;
-end
 endmodule
