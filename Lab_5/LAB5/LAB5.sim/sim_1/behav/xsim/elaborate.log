@@ -4,12 +4,5 @@ Running: C:/Xilinx/Vivado/2022.2/bin/unwrapped/win64.o/xelab.exe --incr --debug 
 Using 2 slave threads.
 Starting static elaboration
 Pass Through NonSizing Optimizer
-Completed static elaboration
-Starting simulation data flow analysis
-Completed simulation data flow analysis
-Time Resolution for simulation is 1ps
-Compiling module xil_defaultlib.UART_Rx
-Compiling module xil_defaultlib.UART_Tx_
-Compiling module xil_defaultlib.Rx_Tx_TB
-Compiling module xil_defaultlib.glbl
-Built simulation snapshot Rx_Tx_TB_behav
+ERROR: [VRFC 10-3180] cannot find port 'EN' on this module [C:/Users/z434/OneDrive/Documents/Vivado Projects/COMPE470L/Lab_5/LAB5/LAB5.srcs/sim_1/new/Rx_Tx_TB.v:34]
+ERROR: [XSIM 43-3322] Static elaboration of top level Verilog design unit(s) in library work failed.

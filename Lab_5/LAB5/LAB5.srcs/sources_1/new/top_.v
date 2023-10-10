@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module top(input RsTx, [0:7] sw, wire CLK100MHZ, output RsRx);
+module top(input RsRx, [0:7] sw, wire CLK100MHZ, output RsTx);
 //RS232 SIPO -> PISO
 defparam c2.SCALE = 2;
 
@@ -29,17 +29,23 @@ wire CLKBAUD, CLKBAUD_d2;
 wire DAT_RDY;
 wire [0:7] PO; //
 wire SO;
+
+//assign RsRx = SO;
 clk_div c1(.clk(CLK100MHZ),.clk_o(CLKBAUD));
 clk_div c2(.clk(CLK100MHZ),.clk_o(CLKBAUD_d2));
 
-UART_Rx rx (.clk(CLKBAUD),.SI(RsTx),.PO(PO),.DAT_RDY(DAT_RDY)); // should wait 2 clocks but need to modify Rx
-
-UART_Tx_ tx (.clk(CLKBAUD),.EN(sw[0]),.DAT_RDY(DAT_RDT),.DATA(PO),.SO(SO));
-                            
-assign RsRx = SO;
+UART_Rx rx (.clk(CLKBAUD_d2),.SI(RsTx),.PO(PO),.DAT_RDY(DAT_RDY)); // should wait 2 clocks but need to modify Rx
+UART_Tx_ tx (.clk(CLKBAUD),.DAT_RDY(DAT_RDY),.DATA(PO),.SO(SO));
 
 endmodule
 
+module Rx_Test(input [0:7] PO, clk, output reg RsRx);
+
+always @ (posedge clk)
+begin
+if (PO != 0) RsRx = 1;
+end
+endmodule
 
 module UART_Rx(input clk, SI, output reg [0:7] PO, reg DAT_RDY);
 reg [0:7] Rx_MGMT = 8'b00; // 00 idle, 01 dat, 11 end; //[2:5] iterator
@@ -79,7 +85,7 @@ SAMP = ~SAMP;
 end  
 endmodule
 
-module UART_Tx_(input clk, EN, DAT_RDY,[0:7] DATA, output reg SO);
+module UART_Tx_(input clk, DAT_RDY,[0:7] DATA, output reg SO);
 
 reg [0:7] PLL_BUFFR;
 reg [0:4] iter;
@@ -91,7 +97,7 @@ always @ (posedge clk)
         if (ST_CTRL == 2'b00)
             begin
                 SO = 1; //  idle unless enabled & empty
-                if(EN && ~DAT_RDY) ST_CTRL <= 2'b01;        
+                if(DAT_RDY) ST_CTRL <= 2'b01;        
                 $display("IDLE\n"); 
             end        
         if (ST_CTRL == 2'b01)

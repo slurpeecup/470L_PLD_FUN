@@ -31,7 +31,7 @@ wire SO;
 
 
 UART_Rx R___ (.clk(clkx2),.SI(SI),.PO(PO),.DAT_RDY(DAT_RDY));
-UART_Tx_ T___ (.clk(clk), .EN(en), .DAT_RDY(DAT_RDY),.DATA(PO), .SO(SO));
+UART_Tx_ T___ (.clk(clk), .DAT_RDY(DAT_RDY),.DATA(PO), .SO(SO));
 
 always #2 clk = ~clk;
 always #1 clkx2 = ~clkx2;
