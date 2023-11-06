@@ -1,6 +1,0 @@
-INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/z434/OneDrive/Documents/Vivado Projects/COMPE470L/Lab4.5/Lab4.5.srcs/sources_1/new/Blah.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module IDLE
-INFO: [VRFC 10-311] analyzing module MEM
-INFO: [VRFC 10-311] analyzing module DATA_
-INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/z434/OneDrive/Documents/Vivado Projects/COMPE470L/Lab4.5/Lab4.5.srcs/sim_1/new/DATA_TB.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module DATA_TB

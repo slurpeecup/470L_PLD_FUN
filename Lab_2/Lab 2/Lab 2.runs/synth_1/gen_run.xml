@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-2" LaunchTime="1693006089" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/seven_seg_bcd.dcp">
+  <File Type="RDS-DCP" Name="seven_seg_bcd.dcp"/>
+  <File Type="RDS-UTIL-PB" Name="seven_seg_bcd_utilization_synth.pb"/>
   <File Type="PA-TCL" Name="seven_seg_bcd.tcl"/>
+  <File Type="RDS-UTIL" Name="seven_seg_bcd_utilization_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="seven_seg_bcd_reports.tcl"/>
   <File Type="RDS-RDS" Name="seven_seg_bcd.vds"/>
-  <File Type="RDS-UTIL" Name="seven_seg_bcd_utilization_synth.rpt"/>
-  <File Type="RDS-UTIL-PB" Name="seven_seg_bcd_utilization_synth.pb"/>
-  <File Type="RDS-DCP" Name="seven_seg_bcd.dcp"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PSRCDIR/sources_1/new/top.v">

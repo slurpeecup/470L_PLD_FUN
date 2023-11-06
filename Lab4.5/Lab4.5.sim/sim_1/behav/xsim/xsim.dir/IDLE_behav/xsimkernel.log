@@ -1,7 +1,0 @@
-Running: xsim.dir/IDLE_behav/xsimk.exe -simmode gui -wdb IDLE_behav.wdb -simrunnum 0 -socket 61255
-Design successfully loaded
-Design Loading Memory Usage: 8024 KB (Peak: 8024 KB)
-Design Loading CPU Usage: 31 ms
-Simulation completed
-Simulation Memory Usage: 8540 KB (Peak: 8540 KB)
-Simulation CPU Usage: 46 ms
